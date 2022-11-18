@@ -1,0 +1,101 @@
+<div [formGroup]="form" class="course-details-form">
+   <!-- ============== INPUT ============== -->
+   <!-- VA dentro de mat-form-field -->
+   <mat-form-field>
+      <input
+         matInput
+         placeholder="Course Title"
+         formControlName="title"
+         #title
+      />
+
+      <!-- mat-hint NO OCUPAR PARA ERRORS -->
+      <mat-hint align="end">
+         {{ title.value.length }} chars long / 60
+      </mat-hint>
+
+      <!-- ERRORS -->
+      <mat-error *ngIf="courseTitle.errors?.required">
+         this field is required
+      </mat-error>
+
+      <mat-error *ngIf="courseTitle.errors?.minlength">
+         A minimun of 5 chars length
+      </mat-error>
+   </mat-form-field>
+
+   <!-- ============== RADIO BUTTON ============== -->
+   <!-- NO va dentro de mat-form-field -->
+   <mat-radio-group class="course-type" formControlName="courseType">
+      <mat-radio-button [disabled]="true" value="free">Free</mat-radio-button>
+
+      <mat-radio-button value="premium">Premium</mat-radio-button>
+   </mat-radio-group>
+
+   <!-- ============== DROP-DOWN ( SELECT ) ============== -->
+   <!-- VA dentro de mat-form-field -->
+   <mat-form-field appearance="fill">
+      <mat-label>Categories</mat-label>
+
+      <mat-select formControlName="category">
+         <mat-option> None </mat-option>
+
+         <mat-optgroup label="Beginners">
+            <mat-option value="newprograming">New to programing</mat-option>
+            <mat-option value="newjavascript">New to javascript</mat-option>
+            <mat-option value="newangular">New to angular</mat-option>
+         </mat-optgroup>
+
+         <mat-option value="beginners"> Beginners </mat-option>
+         <mat-option value="INTERMEDIATE"> Intermediate </mat-option>
+         <mat-option value="ADVANCED"> Advanced </mat-option>
+      </mat-select>
+   </mat-form-field>
+
+   <!-- ============== DATE PICKER ============== -->
+   <mat-form-field appearance="fill">
+      <input
+         matInput
+         [matDatepicker]="picker"
+         formControlName="releasedAt"
+         placeholder="Releaded date"
+      />
+
+      <mat-hint>MM/DD/YYYY</mat-hint>
+
+      <!-- es matSuffix y NO matIconSuffix p'q se vea en 1 linea -->
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+
+      <mat-datepicker #picker [dateClass]="dateClass"></mat-datepicker>
+   </mat-form-field>
+
+   <!-- ============== CHECK BOX ============== -->
+   <!-- [disabled]="true" -->
+   <mat-checkbox formControlName="downloadsAllowed" [indeterminate]="true"
+      >Downloads Allowed ?</mat-checkbox
+   >
+
+   <!-- ============== TEXT AREA ============== -->
+   <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+
+      <!-- [cdkAutosizeMinRows]="2" -->
+      <textarea
+         cdkTextareaAutosize
+         matInput
+         formControlName="longDescription"
+      ></textarea>
+   </mat-form-field>
+
+   <!-- <mat-form-field appearance="fill">
+      <mat-label>Course Title</mat-label>
+      <input matInput placeholder="Course Title" formControlName="title" />
+   </mat-form-field>
+
+   <mat-form-field appearance="outline" floatLabel="always">
+      <mat-label>Course Title</mat-label>
+      <input matInput placeholder="Course Title" formControlName="title" />
+
+      <mat-icon matSuffix color="warn">sentiment_very_satisfied</mat-icon>
+   </mat-form-field> -->
+</div>

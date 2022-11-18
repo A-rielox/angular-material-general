@@ -1,0 +1,95 @@
+npm run server
+
+
+la navbar va dentro de la sidenav
+
+<mat-sidenav-container  fullscreen>
+   <mat-sidenav mode="side" opened>Sidenav content</mat-sidenav>
+
+   <mat-toolbar color="primary"> </mat-toolbar>
+
+   <router-outlet></router-outlet>
+</mat-sidenav-container>
+
+
+=============================================
+=============================================
+      LA BASICA
+=============================================
+=============================================
+
+<mat-sidenav-container fullscreen>
+   <!-- mode="side"   -   opened -->
+   <mat-sidenav #sidenav>
+      <mat-nav-list (click)="sidenav.toggle()">
+         <a mat-list-item routerLink="/">
+            <mat-icon>library_books</mat-icon>
+            <span>Courses</span>
+         </a>
+
+         <a mat-list-item routerLink="about">
+            <mat-icon>question_answer</mat-icon>
+            <span>About</span>
+         </a>
+
+         <a mat-list-item>
+            <mat-icon>person_add</mat-icon>
+            <span>Register</span>
+         </a>
+
+         <a mat-list-item>
+            <mat-icon>account_circle</mat-icon>
+            <span>Login</span>
+         </a>
+      </mat-nav-list>
+   </mat-sidenav>
+
+   <!--  -->
+   <!--  -->
+
+   <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()">
+         <mat-icon>menu</mat-icon>
+      </button>
+   </mat-toolbar>
+
+   <router-outlet></router-outlet>
+</mat-sidenav-container>
+
+
+
+=============================================
+=============================================
+      LA BASICA
+=============================================
+=============================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
